@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  wsfirst:
+    build:
+      context: .
+    command: python app.py
+    volumes:
+      - .:/code
+    ports:
+      - 5000:5000
+    networks: 
+      - new_network
+  web:
+    build: ./vechicles
+    command: python server.py
+    networks: 
+      - new_network
+networks:
+  new_network:
